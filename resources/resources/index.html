@@ -12,8 +12,8 @@
     <script src="WasmCpp.js"></script>
 
     <script>
-        // 当页面加载完毕后执行
-        window.onload = function() {
+        // 当模块加载并初始化完成后执行
+        Module.onRuntimeInitialized = function () {
             // 调用导出的函数
             const result1 = Module._say_hello();
             const number = 12345;
@@ -22,9 +22,9 @@
             // 将结果显示在页面上
             const outputDiv = document.getElementById('output');
             outputDiv.innerHTML = `
-                <p>Say Hello: ${result1}</p>
-                <p>Reversed Number of ${number}: ${result2}</p>
-            `;
+                    <p>Say Hello: ${result1}</p>
+                    <p>Reversed Number of ${number}: ${result2}</p>
+                `;
         };
     </script>
 </body>
