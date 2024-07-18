@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebAssembly Example</title>
+</head>
+<body>
+    <h1>WebAssembly Example</h1>
+    <div id="output"></div>
+
+    <!-- 引入生成的 JavaScript 文件 -->
+    <script src="WasmCpp.js"></script>
+
+    <script>
+        // 当页面加载完毕后执行
+        window.onload = function() {
+            // 调用导出的函数
+            const result1 = Module._say_hello();
+            const number = 12345;
+            const result2 = Module._reversenumber(number);
+
+            // 将结果显示在页面上
+            const outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = `
+                <p>Say Hello: ${result1}</p>
+                <p>Reversed Number of ${number}: ${result2}</p>
+            `;
+        };
+    </script>
+</body>
+</html>
