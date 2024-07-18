@@ -18,6 +18,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # 定义导出函数列表
 set(EXPORTED_FUNCTIONS '[\"_say_hello\",\"_reversenumber\"]')
 
+# 定义导出的 Emscripten 运行时方法
+set(EXPORTED_RUNTIME_METHODS "ccall,cwrap")
+
 # 将指定目录文件所有复制到二进制文件目录
 file(GLOB allCopyFiles  "${PROJECT_ROOT_NODE}/resources/*")
 file(COPY ${allCopyFiles} DESTINATION ${PROJECT_ROOT_NODE}/bin)
@@ -36,6 +39,6 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 
 # 设置目标属性
 set_target_properties(${PROJECT_NAME} PROPERTIES
-    LINK_FLAGS "-s WASM=1 -s EXPORTED_FUNCTIONS=${EXPORTED_FUNCTIONS} --no-entry"
+    LINK_FLAGS "-s WASM=1 -s EXPORTED_RUNTIME_METHODS=${EXPORTED_RUNTIME_METHODS} --no-entry" # -s EXPORTED_FUNCTIONS=${EXPORTED_FUNCTIONS} 
     SUFFIX ".html"
 )
