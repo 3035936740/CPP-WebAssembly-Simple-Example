@@ -9,6 +9,7 @@ Assume the project structure is as follows:
 <pre><code>WasmExample
 ------ CMakeLists.txt  
 ------ src  
+       ------ main.cpp  
 ------ main.cpp  
 ------ resources  
        ------main.py  
