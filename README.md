@@ -42,7 +42,7 @@ $ cd bin
 $ python3 main.py
 ```  
 Then, you can access the WebAssembly example at:  
-* localhost:8000
+* http://localhost:8000/
 * http://localhost:8000/WasmCpp.html
 
 This setup assumes your WasmCpp.html, WasmCpp.js, and WasmCpp.wasm files are correctly generated in the bin/resources directory as configured in your CMakeLists.txt. Adjust the paths and port number as needed based on your setup.
