@@ -10,7 +10,6 @@ Assume the project structure is as follows:
 ------ CMakeLists.txt  
 ------ src  
        ------ main.cpp  
------- main.cpp  
 ------ resources  
        ------main.py  
        ------resources  
