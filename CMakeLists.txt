@@ -1,4 +1,4 @@
-﻿cmake_minimum_required (VERSION 3.16)
+cmake_minimum_required (VERSION 3.16)
 
 project(WasmCpp)
 
@@ -37,8 +37,20 @@ set(SOURCES ${PROJECT_ROOT_NODE}/src/main.cpp)
 
 add_executable(${PROJECT_NAME} ${SOURCES})
 
+# LTO (Link Time Optimization) 是一种优化技术，它允许编译器在链接阶段进行优化。LTO 可以提高代码的性能和减少生成文件的大小
+# -flto, -flto=full, -flto=thin: 这些是 LLVM 编译器的标志，用于启用不同类型的 LTO
+# -flto: 启用标准 LTO
+# -flto=full: 启用完整的 LTO
+# -flto=thin: 启用薄 LTO（目前测试较少，因此建议使用标准 LTO）
+
+# USE_PTHREADS=1: 启用 WebAssembly 线程支持
+# USE_PTHREADS=0: 禁用 WebAssembly 线程支持（默认情况下也可以省略此设置）
+
+# PTHREAD_POOL_SIZE=4 线程池大小
+
 # 设置目标属性
 set_target_properties(${PROJECT_NAME} PROPERTIES
-    LINK_FLAGS "-s WASM=1 -s EXPORTED_RUNTIME_METHODS=${EXPORTED_RUNTIME_METHODS} --no-entry" # -s EXPORTED_FUNCTIONS=${EXPORTED_FUNCTIONS} 
+    COMPILE_FLAGS "-flto -O3"
+    LINK_FLAGS "-pthread -s USE_PTHREADS=1 -s PTHREAD_POOL_SIZE=4 -s WASM=1 -s EXPORTED_RUNTIME_METHODS=${EXPORTED_RUNTIME_METHODS} -flto" # -s EXPORTED_FUNCTIONS=${EXPORTED_FUNCTIONS}  --no-entry
     SUFFIX ".html"
 )
