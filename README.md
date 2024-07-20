@@ -7,14 +7,14 @@ This is a simple example demonstrating how to compile and build a C++20 program 
 Assume the project structure is as follows:
 
 <pre><code>WasmExample
-©¦
-©À©¤©¤ CMakeLists.txt
-©À©¤©¤ src
-©¦   ©¸©¤©¤ main.cpp
-©¸©¤©¤ resources
-    ©À©¤©¤ main.py
-    ©¸©¤©¤ resources
-        ©¸©¤©¤ index.html</code></pre>
+â”‚
+â”œâ”€â”€ CMakeLists.txt
+â”œâ”€â”€ src
+â”‚   â””â”€â”€ main.cpp
+â””â”€â”€ resources
+    â”œâ”€â”€ main.py
+    â””â”€â”€ resources
+        â””â”€â”€ index.html</code></pre>
 
 ## Getting Started
 ### Clone the Repository
