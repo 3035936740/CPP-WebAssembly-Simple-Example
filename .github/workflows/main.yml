@@ -1,0 +1,32 @@
+name: Build with Emscripten and CMake
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Emscripten
+      uses: lovasoa/setup-emscripten@master
+      with:
+        sdk: '1.38.47'
+    
+    - name: Install CMake
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake
+    
+    - name: Verify em++
+      run: |
+        em++ --version
+
+    - name: Verify CMake
+      run: |
+        cmake --version
