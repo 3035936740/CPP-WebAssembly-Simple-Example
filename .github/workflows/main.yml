@@ -35,3 +35,10 @@ jobs:
     - name: Verify CMake
       run: |
         cmake --version
+
+    - name: Build project with CMake and Emscripten
+      run: |
+        mkdir -p build
+        cd build
+        cmake ..
+        cmake --build .
