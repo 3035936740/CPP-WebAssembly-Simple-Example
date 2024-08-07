@@ -24,11 +24,6 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y cmake
     
-    - name: Install Zip
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y zip
-    
     - name: Verify em++
       run: |
         em++ --version
@@ -44,12 +39,8 @@ jobs:
         cmake ..
         cmake --build .
 
-    - name: Compress build output
-      run: |
-        zip -r wasm-linux-example.zip bin
-
     - name: Upload build output
       uses: actions/upload-artifact@v4
       with:
         name: wasm-linux-example
-        path: wasm-linux-example.zip
+        path: bin
