@@ -16,7 +16,7 @@ jobs:
     - name: Set up Emscripten
       uses: lovasoa/setup-emscripten@master
       with:
-        sdk: '1.38.47'
+        emscripten-version: '1.38.47'
     
     - name: Install CMake
       run: |
