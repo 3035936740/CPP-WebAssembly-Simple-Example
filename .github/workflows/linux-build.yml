@@ -46,7 +46,6 @@ jobs:
 
     - name: Compress build output
       run: |
-        cd ..
         zip -r example.zip bin
 
     - name: Upload build output
