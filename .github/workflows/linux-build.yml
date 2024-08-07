@@ -46,10 +46,10 @@ jobs:
 
     - name: Compress build output
       run: |
-        zip -r example.zip bin
+        zip -r wasm-linux-example.zip bin
 
     - name: Upload build output
       uses: actions/upload-artifact@v4
       with:
-        name: wasm-linux-example.zip
+        name: wasm-linux-example
         path: wasm-linux-example.zip
