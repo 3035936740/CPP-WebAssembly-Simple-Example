@@ -1,6 +1,7 @@
-name: Build with Emscripten and CMake
+name: Build with Emscripten and CMake for GNU Linux
 
 on:
+  workflow_dispatch:
   push:
     branches:
     - main
@@ -23,6 +24,11 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y cmake
     
+    - name: Install Zip
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y zip
+    
     - name: Verify em++
       run: |
         em++ --version
@@ -37,3 +43,14 @@ jobs:
         cd build
         cmake ..
         cmake --build .
+
+    - name: Compress build output
+      run: |
+        cd ..
+        zip -r example.zip bin
+
+    - name: Upload build output
+      uses: actions/upload-artifact@v4
+      with:
+        name: wasm-linux-example.zip
+        path: wasm-linux-example.zip
